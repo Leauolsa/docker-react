@@ -19,5 +19,4 @@ deploy:
   on:
     branch: master #only deploy code when the MASTER branch is modified
   access_key_id: $AWS_access_key
-  secret_access_key: 
-    secure: "$AWS_Secret_Key"
+  secret_access_key: $AWS_Secret_Key

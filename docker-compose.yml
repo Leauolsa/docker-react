@@ -5,7 +5,7 @@ services:
       context: . #definir a origem dos arquivos a serem executados
       dockerfile: Dockerfile.dev  #definir o nome do Dockerfile caso NAO seja o default
     ports:
-      - "3000:3000" #fora do container : dentro do container
+      - "80:8080" #fora do container : dentro do container
     environment:
       - CHOKIDAR_USEPOLLING=true  #atualizar sempre
     volumes:

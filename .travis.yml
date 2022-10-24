@@ -4,7 +4,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t leauolsa/docker-react -f Dockerfile.dev . 
+  - docker build -t leauolsa/docker-react -f Dockerfile.dev .
 
 script:
   - docker run -e CI=true leauolsa/docker-react npm run test npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-1"
+  app: "Docker_React_app"
+  env: "Dockerreactapp-env"
+  bucket_name: "elasticbeanstalk-us-east-1-239454478128"
+  bucket_path: "Docker_React_app"
+  on:
+    branch: master #only deploy code when the MASTER branch is modified
+  access_key_id: $AWS_access_key
+  secret_access_key: 
+    secure: "$AWS_Secret_Key"
